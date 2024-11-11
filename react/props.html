@@ -1,0 +1,42 @@
+<html>
+    <head></head>
+    <body>
+        <div id="app"></div>
+        <!-- unpkgはnpmのCDN, ReactコアとReact-DOMを取得すればNode.jsなしでも一応動かせる。 -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- Babelはjsx=>jsのトランスパイラ, ブラウザでjsx動かすにはこれがないとSyntaxError. -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/jsx">
+            function Header({title}) {
+                // propsはobjectなので展開する
+                // console.log(props);
+                // const title = props.title;
+                title = title ? title : "Default title."
+                return <h1>{title}</h1>;
+            }
+            function HomePage() {
+                const names = ["Aris", "Bob", "Charly"];
+                return (
+                    <>
+                        <Header title="Component. Props. State.⚛️" />
+                        <Header title="Develop. Preview. Ship.🚀" />
+                        <Header />
+                        <ul>
+                        {
+                            names.map((name, i) => {
+                                return <li key={i}>{name}</li>
+                            })
+                        }
+                        {
+                            names.map((name, i) => <li key={i}>{name}</li>)
+                        }
+                        </ul>
+                    </>
+                );
+            }
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+    </body>
+</html>

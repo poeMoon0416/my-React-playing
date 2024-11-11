@@ -1,0 +1,31 @@
+<html>
+    <head></head>
+    <body>
+        <div id="app"></div>
+        <div id="test"></div>
+        <!-- unpkgはnpmのCDN, ReactコアとReact-DOMを取得すればNode.jsなしでも一応動かせる。 -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- Babelはjsx=>jsのトランスパイラ, ブラウザでjsx動かすにはこれがないとSyntaxError. -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/jsx">
+            function Header() {
+                return <h1>Develop. Preview. Ship.🚀</h1>;
+            }
+            function HomePage() {
+                return (
+                    <>
+                        <Header />
+                        <Header />
+                        <p>There's two Header.</p>
+                    </>
+                );
+            }
+            // js自体の文法でidの要素はつくられているので省略可能
+            // const app = document.getElementById("app");
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+            test.textContent = "testest";
+        </script>
+    </body>
+</html>

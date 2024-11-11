@@ -1,0 +1,48 @@
+<html>
+    <head></head>
+    <body>
+        <div id="app"></div>
+        <!-- unpkgはnpmのCDN, Reactコア(useState等)とReact-DOM(createRoot等)を取得すればNode.jsなしでも一応動かせる。 -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- Babelはjsx=>jsのトランスパイラ, ブラウザでjsx動かすにはこれがないとSyntaxError. -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/jsx">
+            function Header({title}) {
+                title = title ? title : "Default title."
+                return <h1>{title}</h1>;
+            }
+
+            function Btn() {
+                const [cnt, setCnt] = React.useState(-2);
+                return <button onClick={() => setCnt(cnt+1)}>{cnt}</button>;
+            }
+
+            function HomePage() {
+                const names = ["Aris", "Bob", "Charly"];
+                const [likes, setLikes] = React.useState(0);
+                function incLikes() {
+                    setLikes(likes + 1);
+                }
+                return (
+                    <>
+                        <Header title="Component. Props. State.⚛️" />
+                        <Header />
+                        <ul>
+                            {names.map((name, i) => <li key={i}>{name}</li>)}
+                        </ul>
+                        {/*親コンポーネントにリフトアップされた状態なので子で共有される*/}
+                        <button onClick={incLikes}>{likes}</button>
+                        <button onClick={incLikes}>{likes}</button>
+                        {/*子コンポーネントはkey, もしくは場所と種類で区別されるので状態は個別*/}
+                        <Btn />
+                        <Btn />
+                    </>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+    </body>
+</html>

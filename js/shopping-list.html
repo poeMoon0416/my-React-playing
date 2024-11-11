@@ -1,0 +1,36 @@
+<!-- ソース / https://github.com/mdn/learning-area/blob/main/javascript/apis/document-manipulation/shopping-list.html -->
+<!DOCTYPE html>
+<html lang="ja-JP">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button id="add-item-btn">Add item</button>
+    </div>
+
+    <ul id="shopping-list">
+
+    </ul>
+
+    <script src="./shopping-list.js"></script>
+  </body>
+</html>
